@@ -41,7 +41,6 @@ export class Board {
           const target = row[j];
           target.available = !!selectedCell?.figure?.canMove(target);
         }
-        
       }
   }
 

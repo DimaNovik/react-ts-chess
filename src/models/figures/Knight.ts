@@ -17,9 +17,10 @@ export class Knight extends Figure {
       return false;
     }
 
-    if(this.cell.isEmptyVertical(target)) {
+    if(this.cell.isEmptyForKnight(target)) {
       return true;
     }
+    
     return false;
   }
 }

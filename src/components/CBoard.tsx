@@ -16,7 +16,6 @@ const CBoard: FC<BoardProps> = ({ board, setBoard}) => {
   }, [selectedCell]);
 
   function click(cell: Cell) {
-    console.log(cell);
     if(selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
       selectedCell.moveFigure(cell);
       setSelectedCell(null);

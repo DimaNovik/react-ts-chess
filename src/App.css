@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: background-color .3s ease;
 }
 
 .cell:hover .figure{
@@ -37,6 +38,21 @@
 
 .cell--white {
   background-color: antiquewhite;
+}
+
+.cell--selected {
+  background-color: green;
+}
+
+.cell--available {
+  background-color: green;
+}
+
+.cell__available {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: green;
 }
 
 .figure {

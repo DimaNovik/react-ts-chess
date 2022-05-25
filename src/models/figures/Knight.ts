@@ -16,11 +16,10 @@ export class Knight extends Figure {
     if(!super.canMove(target)) {
       return false;
     }
-
-    if(this.cell.isEmptyForKnight(target)) {
-      return true;
-    }
     
-    return false;
-  }
+    let dx = Math.abs(this.cell.x - target.x);
+    let dy = Math.abs(this.cell.y - target.y);
+
+    return (dx === 1 && dy === 2) || (dx === 2 && dy === 1); 
+}
 }

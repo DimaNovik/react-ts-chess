@@ -48,7 +48,7 @@ export class Cell {
 
     const min = Math.min(this.x, target.x);
     const max = Math.max(this.x, target.x);
-
+    
     for (let x = min + 1; x < max; x++) {
       if(!this.board.getCell(x, this.y).isEmpty()) {
         return false;
@@ -75,13 +75,6 @@ export class Cell {
    }
 
    return true;
-  }
-
-  isEmptyForKnight(target: Cell): boolean {
-    const dx = Math.abs(this.x - target.x);
-    const dy = Math.abs(this.y - target.y);
-
-    return (dx === 1 && dy === 2) || (dx === 2 && dy === 1);
   }
 
   moveFigure(target: Cell) {

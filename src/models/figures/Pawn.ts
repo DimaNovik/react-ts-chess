@@ -5,6 +5,9 @@ import bLogo from "../../assets/black-pawn.png";
 import wLogo from "../../assets/white-pawn.png";
 
 export class Pawn extends Figure {
+
+  isFirstStep: boolean = true;
+
   constructor(color: Colors, cell: Cell) {
     super(color, cell);
 
@@ -17,15 +20,15 @@ export class Pawn extends Figure {
       return false;
     }
 
-    if(this.cell.isEmptyVertical(target)) {
+    const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1;
+    const firstStepDirection = this.cell.figure?.color === Colors.BLACK ? 2 : -2;
+
+    if((target.y === this.cell.y + direction || this.isFirstStep && (target.y === this.cell.y + firstStepDirection))
+    && target.x === this.cell.x && this.cell.board.getCell(target.x, target.y).isEmpty())
+    {
       return true;
     }
-    if(this.cell.isEmptyHorizontal(target)) {
-      return true;
-    }
-    if(this.cell.isEmptyDiagonal(target)) {
-      return true;
-    }
+
     return false;
   }
 }

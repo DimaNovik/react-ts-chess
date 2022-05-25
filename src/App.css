@@ -9,6 +9,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.game {
+  display: flex;
 }
 
 .board {
@@ -16,6 +21,14 @@
   height: calc(64px * 8);
   display: flex;
   flex-wrap: wrap;
+}
+
+.head__title {
+  margin-bottom: 20px;
+}
+
+.head__timer {
+  margin-bottom: 20px;
 }
 
 .cell {
@@ -60,4 +73,25 @@
   width: 48px;
   height: auto;
   transition: transform .3s ease;
+}
+
+.lost {
+  height: calc(50vh - 60px);
+  padding: 36px;
+  background-color: lightgray;
+}
+
+.lost__item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+}
+
+.timer__btn {
+  margin-right: 20px;
 }

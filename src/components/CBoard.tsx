@@ -1,14 +1,18 @@
 import React, { FC, useEffect, useState } from "react";
 import { Board } from "../models/Board";
 import { Cell } from "../models/Cell";
+import { Player } from "../models/Player";
 import CCell from "./CCell";
 
 interface BoardProps {
   board: Board;
   setBoard: (board: Board) => void;
+  currentPlayer: Player | null;
+  swapPlayer: () => void;
+  
 }
 
-const CBoard: FC<BoardProps> = ({ board, setBoard}) => {
+const CBoard: FC<BoardProps> = ({ board, setBoard, currentPlayer, swapPlayer}) => {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
   useEffect(() => {
@@ -18,10 +22,13 @@ const CBoard: FC<BoardProps> = ({ board, setBoard}) => {
   function click(cell: Cell) {
     if(selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
       selectedCell.moveFigure(cell);
+      swapPlayer();
       setSelectedCell(null);
       updateBoard();
     } else {
-      setSelectedCell(cell)
+      if(cell.figure?.color === currentPlayer?.color) {
+        setSelectedCell(cell);
+      }
     }
   }
 
